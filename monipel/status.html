@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#06f" />
+    <meta http-equiv="expires" content="-1">
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Status | Hotspot</title>
+    $(if refresh-timeout)
+    <meta http-equiv="refresh" content="$(refresh-timeout-secs)" />
+    $(endif)
+  </head>
+
+  <script>
+    $(if advert-pending == 'yes')
+      var popup = '';
+      function focusAdvert() {
+        if (window.focus) popup.focus();
+      }
+      function openAdvert() {
+        popup = open('$(link-advert)', 'hotspot_advert', '');
+        setTimeout("focusAdvert()", 1000);
+      }
+    $(endif)
+      function openLogout() {
+        if (window.name != 'hotspot_status') return true;
+          open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+          window.close();
+        return false;
+      }
+  </script>
+  <body 
+    $(if advert-pending == 'yes')	
+      onLoad="openAdvert()"
+    $(endif) >
+    <div class="container">
+      <div class="wrapper">
+        <div class="title-wrapper">
+          <h1>Status</h1>
+          <!-- prettier-ignore -->
+          <p>Informasi/status voucher <strong>$(if login-by == 'trial')Trial$(elif login-by != 'mac')$(username)$(endif)</strong>.</p>
+        </div>
+
+        <table>
+          <tr>
+            <th>IP Address:</th>
+            <td>$(ip)</td> 
+          </tr>
+          <tr>
+            <th>Bytes U/D:</th>
+            <td>$(bytes-in-nice) / $(bytes-out-nice)</td> 
+          </tr>
+          $(if session-time-left)
+          <tr>
+            <th>Uptime / Left:</th>
+            <td>$(uptime) / $(session-time-left)</td> 
+          </tr>
+          $(else)
+          <tr>
+            <th>Uptime:</th>
+            <td>$(uptime)</td> 
+          </tr>
+          $(endif)
+
+          $(if blocked == 'yes')
+          <tr>
+            <th>Status: </th>
+            <td><a href="$(link-advert)" target="hotspot_advert">advertisement</a> required</td> 
+          </tr>
+          $(elif refresh-timeout)
+          <tr>
+            <th>Refresh:</th>
+            <td>$(refresh-timeout)</td>
+          </tr>
+          $(endif)
+
+          <tr id="expiredRow">
+            <th>Expired:</th>
+            <td id="expired"></td>
+          </tr>
+        </table>
+
+        $(if login-by-mac != 'yes')
+        <form 
+          action="$(link-logout)" 
+          name="logout" 
+          onSubmit="return openLogout()">
+          <button class="btn btn-primary" type="submit">Logout</button>
+        </form>
+        $(endif)
+
+        <div class="form-footer">
+          <p class="copy-right">Powered By <a href="https://mikmoni.com">Mikmoni.com</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      import config from './config.js';
+      document.title = `Status | ${window.location.hostname}`;
+     
+      if(config.expiredChecker.active) {
+        const expiredTable = document.getElementById('expired');
+        expiredTable.insertAdjacentHTML('afterbegin', '<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>')
+        fetch(`${config.expiredChecker.URL}/$(username)`, { 
+          method: 'POST', 
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({token: config.expiredChecker.token})
+        })
+        .then(response => {
+          if(response.ok) {
+            return response.json();
+          } else {
+            throw new Error(response.statusText);
+          }
+        })
+        .then(result=> {
+          const { comment } = result.data;
+          expiredTable.innerHTML = comment
+        })
+        .catch(error => {
+          expiredTable.innerHTML = error.message;
+        })      
+      } else {
+        document.getElementById('expiredRow').style.display = 'none'
+      }
+     
+    </script>
+  </body>
+</html>
