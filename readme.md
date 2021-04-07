@@ -6,4 +6,6 @@ Template login hotspot RouterOS ini dirancang untuk pelanggan mikmoni, meskipun 
 
 ## [Monipel](https://github.com/renomureza/mikmoni-hotspot-template/tree/master/monipel)
 
+<p align="center">
 <img src="https://raw.githubusercontent.com/renomureza/mikmoni-hotspot-template/master/monipel.png" />
+</p>
