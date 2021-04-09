@@ -44,7 +44,7 @@ Jika Anda mengaktifkan metode login `qrCode` masukkan URL tempat pengguna memind
 Pengguna tentunya harus bisa mengunjungi URL/domain tersebut meskipun mereka belum login, oleh karena itu silahkan buka Terminal di Winbox kemudian copy paste kode di bawah kemudian enter.
 
 ```
-/ip hotspot walled-garden ip add action=accept comment="Mikmoni" disabled=no dst-host=*.mikmoni.com
+/ip hotspot walled-garden ip add action=accept comment="Mikmoni" disabled=no dst-host=mikmoni.com
 ```
 
 **Apa Artinya Perintah di Atas?**
@@ -117,7 +117,7 @@ Sama seperti QR Code Scanner, Ini juga memerlukan konfigurasi Walled Garden kare
 Perintahnya sama seperti QR Code Scanner, biar Anda tidak perlu scroll saya sisipkan lagi:
 
 ```
-/ip hotspot walled-garden ip add action=accept comment="Mikmoni" disabled=no dst-host=*.mikmoni.com
+/ip hotspot walled-garden ip add action=accept comment="Mikmoni" disabled=no dst-host=mikmoni.com
 ```
 
 ## Laporkan Masalah
