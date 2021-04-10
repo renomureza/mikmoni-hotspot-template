@@ -1,12 +1,16 @@
 # Monipel | Mikmoni Template Login Hotspot
 
+<p align="center">
+<img src="https://raw.githubusercontent.com/renomureza/mikmoni-hotspot-template/master/ramadhan.png" />
+</p>
+
 Template login hotspot RouterOS ini dirancang untuk pelanggan mikmoni, meskipun demikian pengguna umum juga bisa menggunakan template ini, namun mungkin perlu beberapa penyesuaian.
 
 Template ini juga dibuat agar lebih mudah diatur oleh pengguna awam, pengguna hanya perlu mengubah beberapa nilai untuk menyesuaikan halaman login.
 
 ## Konfigurasi
 
-Buka file `config.js`, ubah sesuai kebutuhan.
+Buka file `config.js` di folder `js`, ubah sesuai kebutuhan.
 
 ### Mengaktifkan/Menonaktifkan Metode Login
 
@@ -33,14 +37,14 @@ Jika Anda mengaktifkan metode login `qrCode` masukkan URL tempat pengguna memind
 
 ```javascript
  // ...
-  qrCodeScannerURL: "https://example.com/qrcode-scanner",
+  qrCodeScannerURL: "https://mikmoni.com/qrcode-scanner",
  // ..
 ```
 
 Pengguna tentunya harus bisa mengunjungi URL/domain tersebut meskipun mereka belum login, oleh karena itu silahkan buka Terminal di Winbox kemudian copy paste kode di bawah kemudian enter.
 
 ```
-/ip hotspot walled-garden ip add action=accept comment="Mikmoni" disabled=no dst-host=*.mikmoni.com
+/ip hotspot walled-garden ip add action=accept comment="Mikmoni" disabled=no dst-host=mikmoni.com
 ```
 
 **Apa Artinya Perintah di Atas?**
@@ -113,9 +117,20 @@ Sama seperti QR Code Scanner, Ini juga memerlukan konfigurasi Walled Garden kare
 Perintahnya sama seperti QR Code Scanner, biar Anda tidak perlu scroll saya sisipkan lagi:
 
 ```
-/ip hotspot walled-garden ip add action=accept comment="Mikmoni" disabled=no dst-host=*.mikmoni.com
+/ip hotspot walled-garden ip add action=accept comment="Mikmoni" disabled=no dst-host=mikmoni.com
 ```
 
-## Laporkan Masalah
+### Atur Lokasi untuk Menghitung Waktu Sholat/Imsak
 
-Jika Anda menemukan masalah silahkan laporkan.
+Nilai `latitude` dan `longtitude` atur sesuai dengan lokasi Anda saat ini, cari di sini: [https://github.com/benangmerah/wilayah/blob/master/datasources/daftar-nama-daerah.csv](https://github.com/benangmerah/wilayah/blob/master/datasources/daftar-nama-daerah.csv)
+
+Jika tidak diubah, default-nya akan menggunakan Provinsi DKI Jakarta.
+
+```javascript
+// ...
+prayTime: {
+    latitude: -6.211544,
+    longtitude: 106.845172,
+}
+//....
+```
