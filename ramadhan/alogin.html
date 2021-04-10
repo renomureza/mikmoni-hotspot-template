@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="2; url=$(link-redirect)" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#06f" />
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Redirect | Hotspot</title>
+    <script>
+      function startClock() {
+        $(if popup == 'true')
+          open('$(link-status)', 'hotspot_status', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=290,height=200');
+        $(endif)
+          location.href = './success.html';
+      }
+    </script>
+  </head>
+  <body onload="startClock()">
+    <div class="container">
+      <div class="wrapper">
+        <div class="imageHeader">
+          <img width="inherit" src="./img/ramadhan-month.jpg" />
+        </div>
+        <div class="dateTimeWrapper">
+          <div class="date"></div>
+          <div class="clock"></div>
+        </div>
+
+        <div class="prayerTime">
+          <div class="imsak" id="imsak">
+            <p><strong>Imsak</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="subuh" id="fajr">
+            <p><strong>Subuh</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="zuhur" id="dhuhr">
+            <p><strong>Zuhur</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="asar" id="asr">
+            <p><strong>Asar</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="magrib" id="maghrib">
+            <p><strong>Magrib</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="isya" id="isha">
+            <p><strong>Isya</strong></p>
+            <p>00:00</p>
+          </div>
+        </div>
+
+        <div class="title-wrapper">
+          <h1>Berhasil Terhubung!</h1>
+          <p>Jika belum, <a href="./login">klik di sini</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./js/ramadhanTime.js"></script>
+    <script>
+      document.title = `Redirect | ${window.location.hostname}`;
+    </script>
+  </body>
+</html>

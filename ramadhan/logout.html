@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="theme-color" content="#06f" />
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Logout | Hotspot</title>
+  </head>
+  <body>
+    <script>
+      function openLogin() {
+        if (window.name != "hotspot_logout") return true;
+        open("$(link-login)", "_blank", "");
+        window.close();
+        return false;
+      }
+    </script>
+    <div class="container">
+      <div class="wrapper">
+        <div class="imageHeader">
+          <img width="inherit" src="./img/ramadhan-month.jpg" />
+        </div>
+        <div class="dateTimeWrapper">
+          <div class="date"></div>
+          <div class="clock"></div>
+        </div>
+
+        <div class="prayerTime">
+          <div class="imsak" id="imsak">
+            <p><strong>Imsak</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="subuh" id="fajr">
+            <p><strong>Subuh</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="zuhur" id="dhuhr">
+            <p><strong>Zuhur</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="asar" id="asr">
+            <p><strong>Asar</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="magrib" id="maghrib">
+            <p><strong>Magrib</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="isya" id="isha">
+            <p><strong>Isya</strong></p>
+            <p>00:00</p>
+          </div>
+        </div>
+
+        <div class="title-wrapper">
+          <h1>Anda Baru Saja Keluar!</h1>
+          <p>Informasi/status voucher <strong>$(username)</strong>.</p>
+        </div>
+
+        <table>
+          <tr>
+            <th>IP Address:</th>
+            <td>$(ip)</td>
+          </tr>
+          <tr>
+            <th>MAC Address:</th>
+            <td>$(mac)</td>
+          </tr>
+          <tr>
+            <th>Bytes U/D:</th>
+            <td>$(bytes-in-nice) / $(bytes-out-nice)</td>
+          </tr>
+          $(if session-time-left)
+          <tr>
+            <th>Uptime / Left:</th>
+            <td>$(uptime) / $(session-time-left)</td>
+          </tr>
+          $(else)
+          <tr>
+            <th>Uptime:</th>
+            <td>$(uptime)</td>
+          </tr>
+          $(endif)
+          <!-- prettier-ignore -->
+          $(if remain-bytes-total)
+          <tr>
+            <th>Sisa kuota:</th>
+            <td>$(remain-bytes-total)</td>
+          </tr>
+          $(endif)
+        </table>
+
+        <!-- prettier-ignore -->
+        <form
+          action="$(link-login)"
+          autocomplete="off"
+          method="POST"
+          name="login"
+          onSubmit="return openLogin()"
+          >
+          <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+
+        <div class="form-footer">
+          <p class="copy-right">
+            Powered By
+            <a target="_blank" href="intent:https://mikmoni.com#Intent;end"
+              >Mikmoni.com</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./js/ramadhanTime.js"></script>
+    <script>
+      document.title = `Logout | ${window.location.hostname}`;
+    </script>
+  </body>
+</html>

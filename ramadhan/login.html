@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#06f" />
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Hotspot | Login</title>
+  </head>
+  <body>
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post">
+      <input type="hidden" name="username" />
+      <input type="hidden" name="password" />
+      <input type="hidden" name="dst" value="$(link-orig)" />
+      <input type="hidden" name="popup" value="true" />
+    </form>
+
+    <script src="./md5.js"></script>
+    <script>
+      function doLogin() {
+        document.sendin.username.value = document.login.username.value;
+        document.sendin.password.value = hexMD5(
+          "$(chap-id)" + document.login.password.value + "$(chap-challenge)"
+        );
+        document.sendin.submit();
+        return false;
+      }
+    </script>
+    $(endif)
+
+    <!-- prettier-ignore -->
+    <div class="container">
+      <div class="wrapper">
+        <div class="imageHeader">
+          <img width="inherit" src="./img/ramadhan-month.jpg" />
+        </div>
+        <div class="dateTimeWrapper">
+          <div class="date"></div>
+          <div class="clock"></div>
+        </div>
+
+        <div class="prayerTime">
+          <div class="imsak" id="imsak">
+            <p><strong>Imsak</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="subuh" id="fajr">
+            <p><strong>Subuh</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="zuhur" id="dhuhr">
+            <p><strong>Zuhur</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="asar" id="asr">
+            <p><strong>Asar</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="magrib" id="maghrib">
+            <p><strong>Magrib</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="isya" id="isha">
+            <p><strong>Isya</strong></p>
+            <p>00:00</p>
+          </div>
+        </div>
+
+        <div class="login-method">
+          <ul>
+            <li id="member" class="login-method-menu ">Member</li>
+            <li id='voucher' class="login-method-menu">Voucher</li>
+            <li id='qrCode' class="login-method-menu">QR Code</li>
+          </ul>
+        </div>
+
+        <form
+          action="$(link-login-only)"
+          autocomplete="off"
+          method="POST"
+          name="login"
+          $(if chap-id)
+          onSubmit="return doLogin()"
+          $(endif)
+          >
+          <input type="hidden" name="dst" value="$(link-orig)" />
+          <input type="hidden" name="popup" value="true" />
+
+          <div id="input-group-username" class="input-group">
+            <div class="input-icon">
+              <input id="username" class="input" type="text" placeholder="Username" name="username" required/>
+              <i class="icon">👳‍♂️</i>
+            </div>
+          </div>
+          <div id="input-group-password" class="input-group">
+            <div class="input-icon">
+              <input id="password" class="input" type="password" placeholder="Password" name="password" />
+              <i class="icon">🔑</i>
+            </div>
+            <a id="showPassword" class="btn btn-show-hide" tabindex="-1">
+              <span id="showPasswordText" >Show</span>
+            </a>
+          </div>
+
+          <p id="qrCodeInfo" style="text-align: center; display: none;">Untuk masuk melalui QR Code, <a id="qrCodeScannerURL" href="">klik disini</a></p>
+
+          $(if error)
+            <p class="error">$(error)</p>
+          $(endif)
+
+          <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Harga</th>
+              <th>Masa Aktif</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>5000</td>
+              <td>1 Hari</td>
+            </tr>
+            <tr>
+              <td>25000</td>
+              <td>7 Hari</td>
+            </tr>
+            <tr>
+              <td>50000</td>
+              <td>30 Hari</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="form-footer">
+          $(if trial == 'yes')
+            <p style="margin-bottom: 15px;">Mau beli tapi masih ragu? <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">Coba GRATIS!</a></p>
+          $(endif)
+          <p class="copy-right">Powered By <a target="_blank" href="intent:https://mikmoni.com#Intent;end">Mikmoni.com</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./js/loginScript.js"></script>
+    <script type="module" src="./js/ramadhanTime.js"></script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="theme-color" content="#06f" />
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Error | Hotspot</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="imageHeader">
+          <img width="inherit" src="./img/ramadhan-month.jpg" />
+        </div>
+        <div class="dateTimeWrapper">
+          <div class="date"></div>
+          <div class="clock"></div>
+        </div>
+
+        <div class="prayerTime">
+          <div class="imsak" id="imsak">
+            <p><strong>Imsak</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="subuh" id="fajr">
+            <p><strong>Subuh</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="zuhur" id="dhuhr">
+            <p><strong>Zuhur</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="asar" id="asr">
+            <p><strong>Asar</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="magrib" id="maghrib">
+            <p><strong>Magrib</strong></p>
+            <p>00:00</p>
+          </div>
+          <div class="isya" id="isha">
+            <p><strong>Isya</strong></p>
+            <p>00:00</p>
+          </div>
+        </div>
+
+        <div class="title-wrapper">
+          <h1>Error</h1>
+          <p class="error">$(error)</p>
+          <p><a href="$(link-login)">Kembali ke halaman login</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./js/ramadhanTime.js"></script>
+    <script>
+      document.title = `Error | ${window.location.hostname}`;
+    </script>
+  </body>
+</html>

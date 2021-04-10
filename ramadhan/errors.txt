@@ -1,0 +1,74 @@
+# internal-error
+# Ini tidak akan ditampilkan jika memiliki halaman kesalahan, halaman ini akan ditampilkan.
+# menampilkan pesan kesalahan ini (error-orig akan menjelaskan apa yang telah terjadi)
+internal-error = Kesalahan internal ($(error-orig)).
+
+# config-error
+# Seharusnya tidak terjadi jika hotspot dikonfigurasi dengan benar.
+config-error = Kesalahan konfigurasi ($(error-orig)).
+
+# not-logged-in
+# Akan tampil jika status atau halaman logout diminta oleh pengguna,
+# yang sebenarnya belum masuk
+not-logged-in = Anda belum masuk (ip $(ip)).
+
+# ippool-empty
+# Alamat IP pengguna akan ditetapkan dari kumpulan ip (IP Pool), tetapi tidak ada lagi alamat di IP Pool.
+ippool-empty = Tidak dapat menetapkan alamat IP - Alamat IP dari Pool habis.
+
+# shutting-down
+# Saat shutdown dijalankan, klien baru tidak diterima
+shutting-down = Layanan hotspot sedang ditutup.
+
+# user-session-limit
+# Jika profil pengguna memiliki batas pengguna bersama, maka kesalahan ini akan ditampilkan setelah mencapai batas
+user-session-limit = Voucher $(username) sedang digunakan .
+
+# license-session-limit
+# Bergantung pada nomor lisensi dari klien hotspot aktif yang dibatasi
+# satu atau jumlah lain. Jika batas ini tercapai, kesalahan berikut akan ditampilkan.
+license-session-limit = Batas durasi penggunaan voucher habis ($(error-orig)).
+
+# wrong-mac-username
+# Jika nama pengguna terlihat seperti alamat MAC (12:34:56:78:9a:bc), tetapi bukan
+# alamat MAC klien ini, login ditolak
+wrong-mac-username = Voucher tidak sesuai ($(username)): MAC address ini bukan milik Anda.
+
+# chap-missing
+# Jika metode login http-chap digunakan, tetapi program hotspot tidak menerima kembalian sandi terenkripsi, pesan kesalahan ini ditampilkan.
+# Kemungkinan penyebab kegagalan:
+# - JavaScript tidak diaktifkan di browser web;
+# - halaman login.html tidak valid;
+# - nilai tantangan telah kedaluwarsa di server (lebih dari 1 jam tidak aktif);
+# - Metode login http-chap baru saja dihapus;
+# Jika JavaScript diaktifkan dan halaman login.html valid, coba masuk kembali biasanya memperbaiki masalah ini.
+chap-missing = Browser tidak mengirimkan tanggapanan tantangan (Coba lagi, pastikan JavaScript browser aktif).
+
+# invalid-username
+# Kasus paling umum dari nama pengguna atau kata sandi tidak valid. Jika server RADIUS
+# telah mengirim string kesalahan dengan pesan Access-Reject, maka itu akan menimpa pengaturan ini.
+invalid-username = Voucher tidak sesuai, masukkan kembali dengan benar.
+
+# invalid-mac
+# Pengguna lokal (di server hotspot) dapat terikat ke beberapa alamat MAC. Jika login
+# dari MAC yang berbeda, pesan kesalahan ini akan ditampilkan.
+invalid-mac = Voucher $(username) tidak diizinkan untuk masuk dari alamat MAC ini.
+
+# uptime-limit, traffic-limit
+# Untuk pengguna hotspot lokal jika batas tercapai
+uptime-limit = Voucher $(username) telah mencapai batas waktu.
+traffic-limit = Voucher $(username) telah mencapai batas kuota.
+
+# radius-timeout
+# Pengguna diautentikasi oleh server RADIUS, tetapi tidak ada tanggapan yang diterima darinya,
+# kesalahan berikut akan ditampilkan.
+radius-timeout = RADIUS server tidak merespon.
+
+# auth-in-progress
+# Otorisasi sedang berlangsung. Klien sudah mengeluarkan permintaan otorisasi
+# yang belum selesai.
+auth-in-progress = Otorisasi sedang berlangung, coba lagi beberapa saat.
+
+# radius-reply
+# Server Radius mengembalikan beberapa pesan kesalahan khusus
+radius-reply = Kesalahan dari server Radius $(error-orig).
