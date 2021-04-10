@@ -1,4 +1,4 @@
-# Monipel | Mikmoni Template Login Hotspot
+# Ramadhan | Mikmoni Template Login Hotspot
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/renomureza/mikmoni-hotspot-template/master/ramadhan.png" />
