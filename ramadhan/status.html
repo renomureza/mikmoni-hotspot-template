@@ -157,7 +157,8 @@
         })
         .then(result=> {
           const { comment } = result.data;
-          expiredTable.innerHTML = comment
+          const expiredTime = (comment.match(/[\/]/g) || []).length === 2 ? comment : '-';
+          expiredTable.innerHTML = expiredTime;
         })
         .catch(error => {
           expiredTable.innerHTML = error.message;

@@ -28,10 +28,17 @@ const currentDate = () => {
   }).format(new Date());
 };
 
-currentDate();
-currentTime();
-
 // Pray Time
+prayTimes.adjust({ imsak: "10 min", fajr: 20, asr: "Standard", isha: 18 });
+prayTimes.tune({
+  imsak: 2.5,
+  fajr: 2.5,
+  dhuhr: 3.5,
+  asr: 2,
+  maghrib: 3.5,
+  isha: 2.5,
+});
+
 const prayTimesResult = prayTimes.getTimes(new Date(), [
   config.prayTime.latitude || -6.1783056,
   config.prayTime.longtitude || 106.6318889,
@@ -43,4 +50,6 @@ const insertPrayerTime = () => {
   });
 };
 
+currentDate();
+currentTime();
 insertPrayerTime();
