@@ -11,6 +11,8 @@
 1. Klik tombol **Code** di atas.
 2. Pilih **Download ZIP**.
 
+atau, download langsung melalui link berikut: **[DOWNLOAD](https://github.com/renomureza/mikmoni-hotspot-template/archive/refs/heads/master.zip)**
+
 Cara ini akan mengunduh semua template.
 
 ## [Monipel](https://github.com/renomureza/mikmoni-hotspot-template/tree/master/monipel)
